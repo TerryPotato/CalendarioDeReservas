@@ -190,13 +190,18 @@
             // Botón para guardar un nuevo evento
             document.getElementById('saveAddEvent').addEventListener('click', async () => {
                 const title = document.getElementById('add-title').value;
-                const start = new Date(document.getElementById('add-start').value).toISOString(); // Convierte a ISO con UTC
-                const end = new Date(document.getElementById('add-end').value).toISOString(); // Convierte a ISO con UTC
+                const start = document.getElementById('add-start').value; // Enviar como YYYY-MM-DD
+                let end = document.getElementById('add-end').value; // Enviar como YYYY-MM-DD
 
                 if (!title || !start || !end) {
                     alert('Por favor, completa todos los campos.');
                     return;
                 }
+
+                // Suma un día a la fecha de fin
+                const endDate = new Date(end);
+                endDate.setDate(endDate.getDate() + 1);
+                end = endDate.toISOString().split('T')[0]; // Convierte de nuevo a YYYY-MM-DD
 
                 try {
                     const response = await fetch('http://localhost:8000/api/eventos', {
@@ -211,8 +216,7 @@
                         const data = await response.json();
                         alert('Evento agregado exitosamente');
                         console.log(data);
-                        // Recarga el calendario
-                        location.reload();
+                        location.reload(); // Recarga el calendario
                     } else {
                         const error = await response.json();
                         alert(`Error: ${error.message}`);
@@ -245,4 +249,5 @@
     </script>
 </body>
 </html>
+``` 
 

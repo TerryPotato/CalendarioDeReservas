@@ -28,19 +28,25 @@ const getEventoById = asyncHandler(async (req, res) => {
 
 const createEvento = asyncHandler(async (req, res) => {
     const { title, start, end } = req.body;
+
     if (!title || !start || !end) {
         res.status(400);
         throw new Error("Por favor, completa todos los campos obligatorios");
     }
 
+    // Convierte las fechas a objetos Date en la zona horaria local
+    const startDate = new Date(`${start}T00:00:00`); // Agrega la hora para evitar desfases
+    const endDate = new Date(`${end}T00:00:00`);
+
     const evento = await Eventos.create({
         title,
-        start,
-        end
+        start: startDate,
+        end: endDate,
     });
-    res.status(201).json({ 
+
+    res.status(201).json({
         mensaje: "Evento creado",
-        evento
+        evento,
     });
 });
 
