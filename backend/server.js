@@ -22,6 +22,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Configuración de rutas
 app.use("/api/eventos", require("./routes/eventosRoutes"));
+app.use("/api/usuarios", require("./routes/userRoutes"));
 
 // Ruta principal
 app.get("/", (req, res) => {

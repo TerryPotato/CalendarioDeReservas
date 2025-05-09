@@ -1,6 +1,6 @@
 .fondo_login {
-    width: 350px;
-    height: 400px;
+    width: 400px;
+    height: 450px;
     background-color: brown;
     padding-top: 20px;
     margin: 50px auto;
@@ -9,6 +9,19 @@
     border-bottom-left-radius: 20px;
     box-shadow: -10px 10px 15px gray; /* Corrección de la sintaxis */
 }
+
+.fondo_signin {
+    width: 400px;
+    height: 520px;
+    background-color: brown;
+    padding-top: 20px;
+    margin: 50px auto;
+
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -10px 10px 15px gray; /* Corrección de la sintaxis */
+}
+
 
 .titulo_login{
     color: white;
@@ -36,7 +49,7 @@
 }
 
 .boton_login {
-    width: 120px; /* Un poco más ancho */
+    width: 180px; /* Un poco más ancho */
     margin: 20px auto; /* Centrado horizontalmente */
     font-size: 18px; /* Tamaño de fuente ajustado */
     display: block;
@@ -53,4 +66,17 @@
 .boton_login:hover {
     background-color: #45a049; /* Color verde más oscuro al pasar el mouse */
     transform: translateY(-2px); /* Efecto de elevación */
+}
+
+.texto_login {
+    text-align: center; /* Centra el texto horizontalmente */
+    margin-top: 20px; /* Ajusta el margen superior */
+    font-size: 14px; /* Tamaño de fuente ajustado */
+}
+.texto_login a {
+    color: white; /* Cambia el color del enlace */
+    text-decoration: none; /* Elimina el subrayado */
+}
+.texto_login a:hover {
+    color: #ccc; /* Cambia el color al pasar el mouse (opcional) */
 }
