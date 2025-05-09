@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario Avanzado</title>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --fc-today-bg-color: rgba(255, 220, 40, 0.15);
+            --fc-event-bg-color: #3788d8;
+            --fc-event-border-color: #3788d8;
+        }
+        
+        #calendar {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+        
+        .fc-toolbar-title {
+            font-size: 1.75em;
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align: center; color: #2c3e50;">Calendario</h1>
+    <button>Agregar Evento</button>
+    <button style="margin: 20px; padding: 10px 20px; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar Evento</button>
+
+
+    <div id="calendar"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                initialView: 'dayGridMonth',
+                navLinks: true,
+                editable: true,
+                dayMaxEvents: true,
+                nowIndicator: true,
+                firstDay: 1, // Lunes como primer día
+                businessHours: {
+                    daysOfWeek: [1, 2, 3, 4, 5], // Lunes a viernes
+                    startTime: '09:00',
+                    endTime: '18:00'
+                }
+            });
+            calendar.render();
+        });
+    </script>
+</body>
+</html>
