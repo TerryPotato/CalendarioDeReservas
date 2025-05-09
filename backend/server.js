@@ -3,6 +3,7 @@ const dotenv = require("dotenv");
 const colors = require("colors");
 const connectDB = require("./config/db");
 const swaggerUi = require("swagger-ui-express");
+const cors = require('cors');
 
 dotenv.config(); // Carga las variables de entorno
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 8000;
 
 connectDB(); // Conectar a MongoDB
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
