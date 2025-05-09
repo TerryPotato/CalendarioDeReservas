@@ -148,6 +148,7 @@
                 navLinks: true,
                 editable: true,
                 timeZone: 'local', // Asegúrate de que use la zona horaria local
+                nowIndicator: true,
                 events: async function(fetchInfo, successCallback, failureCallback) {
                     try {
                         const response = await fetch('http://localhost:8000/api/eventos');
@@ -178,7 +179,9 @@
                     daysOfWeek: [1, 2, 3, 4, 5],
                     startTime: '09:00',
                     endTime: '18:00'
-                }
+                },
+                
+                
             });
 
             calendar.render();
@@ -232,7 +235,7 @@
                 const id = document.getElementById('delete-id').value;
 
                 console.log('Eliminar Evento con ID:', id);
-                // Aquí puedes realizar una solicitud DELETE al backend para eliminar el evento
+                // Aquí realizar solicitud DELETE al backend para eliminar el evento
             });
 
             // Botón para guardar cambios en un evento
@@ -243,11 +246,10 @@
                 const end = document.getElementById('edit-end').value;
 
                 console.log('Modificar Evento:', { id, title, start, end });
-                // Aquí puedes realizar una solicitud PUT al backend para modificar el evento
+                // Aquí realizar solicitud PUT al backend para modificar el evento
             });
         });
     </script>
 </body>
 </html>
-``` 
 
