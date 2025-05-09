@@ -6,6 +6,26 @@ const getEventos = asyncHandler(async (req, res) => {
     res.status(200).json({ eventos }); 
 });
 
+const getEventoById = asyncHandler(async (req, res) => {
+    const { _id } = req.body; 
+
+    if (!_id) {
+        res.status(400);
+        throw new Error("Por favor proporciona un id de evento");
+    }
+
+    const evento = await Eventos.findById(_id);
+    if (!evento) {
+        res.status(404);
+        throw new Error("Evento no encontrado");
+    }
+
+    res.status(200).json({
+        mensaje: `Evento con id ${_id} encontrado:`,
+        evento
+    }); // Devuelve el evento encontrado
+});
+
 const createEvento = asyncHandler(async (req, res) => {
     const { title, start, end } = req.body;
     if (!title || !start || !end) {
@@ -73,6 +93,7 @@ const deleteEvento = asyncHandler(async (req, res) => {
 
 module.exports = {
     getEventos,
+    getEventoById,
     createEvento,
     updateEvento,
     deleteEvento
