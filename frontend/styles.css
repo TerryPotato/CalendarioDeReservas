@@ -1,10 +1,13 @@
-.fondo_login{
+.fondo_login {
     width: 350px;
     height: 400px;
     background-color: brown;
     padding-top: 20px;
     margin: 50px auto;
 
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    box-shadow: -10px 10px 15px gray; /* Corrección de la sintaxis */
 }
 
 .titulo_login{
@@ -32,13 +35,22 @@
     margin: 15px;
 }
 
-.boton_login{
-    
-    width: 100px;
-    margin-top: 20px;
-    font-size: 20px;
+.boton_login {
+    width: 120px; /* Un poco más ancho */
+    margin: 20px auto; /* Centrado horizontalmente */
+    font-size: 18px; /* Tamaño de fuente ajustado */
     display: block;
-    background-color: white;
+    background-color: #4CAF50; /* Color verde atractivo */
+    color: white; /* Texto blanco */
+    border: none; /* Sin bordes */
+    border-radius: 8px; /* Bordes redondeados */
+    padding: 10px 15px; /* Espaciado interno */
     cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Sombra */
+    transition: all 0.3s ease; /* Transición suave */
+}
 
+.boton_login:hover {
+    background-color: #45a049; /* Color verde más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Efecto de elevación */
 }
