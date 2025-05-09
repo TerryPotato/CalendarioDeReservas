@@ -1,0 +1,44 @@
+.fondo_login{
+    width: 350px;
+    height: 400px;
+    background-color: brown;
+    padding-top: 20px;
+    margin: 50px auto;
+
+}
+
+.titulo_login{
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    
+
+}
+
+.input_login{
+    font-size: 16px;
+    padding: 8px;
+    display: flex;
+    margin: 10px auto;
+}
+
+.label_login{
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    padding: 8px;
+    display: block;
+    margin: 15px;
+}
+
+.boton_login{
+    
+    width: 100px;
+    margin-top: 20px;
+    font-size: 20px;
+    display: block;
+    background-color: white;
+    cursor: pointer;
+
+}
