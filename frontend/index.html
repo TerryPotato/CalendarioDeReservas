@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Calendario Avanzado</title>
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.3/morph/bootstrap.rtl.min.css" integrity="sha512-36xw1AJG6E0yKDFXi1ZCuYvAjyH67M2nhVOmvTh3Y+zRm4TUHrmsh+Xz/jg+7qJPZoH3zf6PhMnK9hSRg2pIcw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         :root {
             --fc-today-bg-color: rgba(255, 220, 40, 0.15);
@@ -27,10 +28,40 @@
 </head>
 <body>
 
-    <h1 style="text-align: center; color: #2c3e50;">Calendario</h1>
-    <button>Agregar Evento</button>
-    <button style="margin: 20px; padding: 10px 20px; background-color: #e74c3c; color: white; border: none; border-radius: 5px; cursor: pointer;">Eliminar Evento</button>
+    <div class="container">
+        <h1 style="text-align: center; color: #2c3e50;">Calendario</h1>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                    <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Send message</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
 
     <div id="calendar"></div>
 
@@ -49,6 +80,13 @@
                 initialView: 'dayGridMonth',
                 navLinks: true,
                 editable: true,
+                events: [
+                    {
+                        title: 'Evento 1',
+                        start: '2025-05-09',
+                        end: '2023-05-10'
+                    }
+                ],
                 dayMaxEvents: true,
                 nowIndicator: true,
                 firstDay: 1, // Lunes como primer día
@@ -63,3 +101,4 @@
     </script>
 </body>
 </html>
+
