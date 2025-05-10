@@ -22,10 +22,11 @@ const registerUser = async (req, res) => {
             password: hashedPassword
         });
 
+        console.log('Usuario creado:', user); // Esto imprimirá el usuario creado en la terminal
     
         if (user) {
             res.status(201).json({
-                _id: user.id,
+                _id: user._id,
                 username: user.username,
                 email: user.email,
                 token: generateToken(user.id)
@@ -34,7 +35,8 @@ const registerUser = async (req, res) => {
             res.status(400).json({ message: 'Datos inválidos' });
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error al registrar el usuario', error });
+        console.error(error); // Imprime el error en la terminal
+        res.status(500).json({ message: 'Error al registrar el usuario', error: error.message });
     }
 };
 
@@ -77,6 +79,9 @@ const getUserProfile = async (req, res) => {
 
 // Generar un token JWT
 const generateToken = (id) => {
+    if (!id) {
+        throw new Error('El ID es undefined'); // Esto ayudará a depurar si el ID no se pasa correctamente
+    }
     return jwt.sign({ id }, process.env.JWT_SECRET, {
         expiresIn: '30d'
     });
