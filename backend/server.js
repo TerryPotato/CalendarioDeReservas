@@ -4,6 +4,7 @@ const colors = require("colors");
 const connectDB = require("./config/db");
 const swaggerUi = require("swagger-ui-express");
 const cors = require('cors');
+const path = require('path');
 
 dotenv.config(); // Carga las variables de entorno
 
@@ -15,6 +16,7 @@ connectDB(); // Conectar a MongoDB
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, '../frontend')));
 
 // Configuración de Swagger
 const swaggerDocument = require("../swagger.json"); // Ajusta la ruta si es necesario
