@@ -9,7 +9,7 @@ router.get('/:_id', getEventoById);
 // Creamos un evento
 router.post('/', createEvento);
 // Modificamos un evento
-router.put('/', updateEvento);
+router.put('/:id', updateEvento);
 // Eliminamos un evento
 router.delete('/:id', deleteEvento);
 

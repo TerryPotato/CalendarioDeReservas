@@ -176,17 +176,6 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/locales/es.min.js"></script>
 
-    <script>
-    let texto = document.getElementById('visualize-id').innerHTML;
-    const copiarContenido = async () => {
-        try {
-        await navigator.clipboard.writeText(texto);
-        console.log('Contenido copiado al portapapeles');
-        } catch (err) {
-        console.error('Error al copiar: ', err);
-        }
-    }
-</script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -324,8 +313,7 @@
             document.getElementById('confirmDeleteEvent').addEventListener('click', async function () {
                 const id = document.getElementById('delete-id').value;
 
-                console.log('ID a eliminar:', id); // Depuración: Verifica el valor del ID
-
+                console.log('ID a eliminar:', id);
                 if (!id) {
                     alert('Por favor, ingresa el ID del evento a eliminar.');
                     return;
@@ -378,4 +366,3 @@
     </script>
 </body>
 </html>
-
