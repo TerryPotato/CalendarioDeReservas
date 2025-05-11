@@ -82,19 +82,21 @@ const updateEvento = asyncHandler(async (req, res) => {
 });
 
 const deleteEvento = asyncHandler(async (req, res) => {
-    const { _id } = req.body;
-    if (!_id) {
+    const { id } = req.params; // Obtén el ID desde los parámetros de la URL
+
+    if (!id) {
         res.status(400);
         throw new Error("Por favor proporciona un número de evento a eliminar");
     }
 
-    const eventoEliminado = await Eventos.findByIdAndDelete(_id);
+    // Busca y elimina el evento por ID
+    const eventoEliminado = await Eventos.findByIdAndDelete(id);
     if (!eventoEliminado) {
         res.status(404);
         throw new Error("Evento no encontrado");
     }
 
-    res.status(200).json({ mensaje: `Evento con id ${_id} eliminado` });
+    res.status(200).json({ mensaje: `Evento con id ${id} eliminado` });
 });
 
 module.exports = {
