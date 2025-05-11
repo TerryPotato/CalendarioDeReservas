@@ -80,7 +80,7 @@
                         <form id="deleteEventForm">
                             <div class="mb-3">
                                 <label for="delete-id" class="col-form-label">ID del Evento:</label>
-                                <input type="text" class="form-control" id="delete-id">
+                                <input type="text" class="form-control" id="delete-id" placeholder="Ingresa el ID del evento">
                             </div>
                         </form>
                     </div>
@@ -321,19 +321,33 @@
             });
 
             // Botón para eliminar un evento
-            document.getElementById('confirmDeleteEvent').addEventListener('click', function () {
+            document.getElementById('confirmDeleteEvent').addEventListener('click', async function () {
                 const id = document.getElementById('delete-id').value;
 
-                console.log('Eliminar Evento con ID:', id);
-                // Aquí realizar solicitud DELETE al backend para eliminar el evento
-                const response = await fetch('http://localhost:8000/api/eventos', {
+                if (!id) {
+                    alert('Por favor, ingresa el ID del evento a eliminar.');
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`http://localhost:8000/api/eventos/${id}`, {
                         method: 'DELETE',
                         headers: {
                             'Content-Type': 'application/json',
                         },
-                        body: JSON.stringify({ id }),
                     });
-                
+
+                    if (response.ok) {
+                        alert('Evento eliminado exitosamente');
+                        location.reload(); // Recarga el calendario para reflejar los cambios
+                    } else {
+                        const error = await response.json();
+                        alert(`Error: ${error.message}`);
+                    }
+                } catch (err) {
+                    console.error('Error al eliminar el evento:', err);
+                    alert('Hubo un error al conectar con el servidor.');
+                }
             });
 
             // Botón para guardar cambios en un evento
@@ -362,5 +376,4 @@
     </script>
 </body>
 </html>
-``` 
 

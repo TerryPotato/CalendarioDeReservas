@@ -11,6 +11,6 @@ router.post('/', createEvento);
 // Modificamos un evento
 router.put('/', updateEvento);
 // Eliminamos un evento
-router.delete('/', deleteEvento);
+router.delete('/:id', deleteEvento);
 
 module.exports = router;
