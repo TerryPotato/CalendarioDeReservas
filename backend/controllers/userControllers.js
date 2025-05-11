@@ -45,20 +45,22 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     try {
+        // Buscar al usuario por email
         const user = await User.findOne({ email });
 
+        // Verificar si el usuario existe y si la contraseña es correcta
         if (user && (await user.matchPassword(password))) {
             res.json({
-                _id: user.id,
+                _id: user._id,
                 username: user.username,
                 email: user.email,
-                token: generateToken(user.id)
+                token: generateToken(user._id) // Generar un token JWT
             });
         } else {
-            res.status(401).json({ message: 'Credenciales inválidas' });
+            res.status(401).json({ message: 'Credenciales inválidas' }); // Error de autenticación
         }
     } catch (error) {
-        res.status(500).json({ message: 'Error al iniciar sesión', error });
+        res.status(500).json({ message: 'Error al iniciar sesión', error: error.message });
     }
 };
 
@@ -68,7 +70,7 @@ const getUserProfile = async (req, res) => {
 
     if (user) {
         res.json({
-            _id: user.id,
+            _id: user._id,
             username: user.username,
             email: user.email
         });

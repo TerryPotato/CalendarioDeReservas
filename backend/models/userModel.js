@@ -15,9 +15,13 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, "La contraseña es obligatoria"],
     }
-    }, {
+}, {
     timestamps: true // Agrega createdAt y updatedAt automáticamente
 });
 
+// Método para comparar contraseñas
+userSchema.methods.matchPassword = async function (enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
 
 module.exports = mongoose.model("Users", userSchema);
