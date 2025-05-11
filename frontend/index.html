@@ -326,6 +326,14 @@
 
                 console.log('Eliminar Evento con ID:', id);
                 // Aquí realizar solicitud DELETE al backend para eliminar el evento
+                const response = await fetch('http://localhost:8000/api/eventos', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ id }),
+                    });
+                
             });
 
             // Botón para guardar cambios en un evento
